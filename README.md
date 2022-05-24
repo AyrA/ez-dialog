@@ -26,5 +26,12 @@ The argument order is chosen so you can use them as an async replacement to the 
 An additonal .custom(...) dialog is provided for you to add custom content.
 
 For a more detailed overview, check the "docs" folder,
-or visit https://cable.ayra.ch/ez-dlg/docs/demo.html
+or visit https://cable.ayra.ch/ez-dlg/docs/
+
+## Styling
+
+No style is applied by default.
+The `ez-classic.css` file is provided as an example style that mimics classic Windows® dialog boxes.
+The documentation contains hints as to how you can style your own dialog boxes.
+
 
