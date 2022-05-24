@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>EZ Dialog installation and styling guide</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>EZ Dialog installation</h1>
+		<p>
+			Installation could not be easier,
+			<a href="#">download the latest release</a>,
+			then simply load <code>ez-dialog.js</code> via script tag.
+		</p>
+		<p>
+			EZ Dialog has no external dependencies.
+			You can safely bundle it together with other scripts in any order.
+		</p>
+		
+		<h1>Styling</h1>
+		<p>
+			The dialog itself is not styled in any way and uses the browser default behavior.
+			This means the dialog is centered on screen and uses the font defined in the <code>body</code> style.
+		</p>
+		<p>
+			The dialog always has this format:
+		</p>
+		<pre>
+&lt;dialog class="ez-dialog"&gt;
+	&lt;h1&gt;Title&lt;/h1&gt;
+	&lt;form&gt;
+		&lt;div&gt;Content&lt;/div&gt;
+		&lt;menu&gt;Buttons&lt;/menu&gt;
+	&lt;/form&gt;
+&lt;/dialog&gt;
+</pre>
+		<p>
+			The heading is absent if no title was provided.
+		</p>
+		<p>
+			<code>ez-classic.css</code> is provided as an example style.
+			You can use this as a reference for creating your own styles.
+			Check the <a href="demo.html">API demo</a> to see this style in action.
+		</p>
+		<p>
+			Below is a list of a few usable style rules
+		</p>
+		<ul>
+			<li><code>.ez-dialog</code>: Concerns the entire dialog</li>
+			<li><code>.ez-dialog::backdrop</code>: Concerns the backdrop</li>
+			<li><code>.ez-dialog > h1</code>: The dialog title</li>
+			<li><code>.ez-dialog > form > div</code>: The dialog contents</li>
+			<li><code>.ez-dialog > form > menu</code>: The dialog button area</li>
+		</ul>
+		<p><a href="index.html">&lt; &lt; Go back</a></p>
+	</body>
+</html>

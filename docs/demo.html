@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>EZ Dialog API demo</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="../ez-classic.css" />
+		<script src="../ez-dialog.js"></script>
+		<script src="test.js" defer></script>
+	</head>
+	<body>
+		<h1>EZ Dialog API demo</h1>
+		<p>
+			This page demonstrates all four dialog types
+		</p>
+		<h2>Demo options</h2>
+		<p>
+			<label>
+				<input type="checkbox" id="cbStyle" />
+				Enable classic style example
+			</label><br />
+			This style emulates classic Windows&reg; dialog boxes.
+		</p>
+
+		<h2>dialog.alert(body, title, button)</h2>
+		<div>
+			<p>
+				<b>Dialog box title</b>:
+				Shown at the top of the dialog using a &lt;h1&gt; tag.
+				It's optional and will not be shown if no value is provided
+			</p>
+			<input type="text" id="tbAlertTitle" placeholder="dialog title" /><br />
+			<p>
+				<b>Dialog box content</b>:
+				This is the text in the main dialog section.
+			</p>
+			<input type="text" id="tbAlertBody" placeholder="dialog text" /><br />
+			<p>
+				<b>Dialog button text</b>:
+				This is the text shown in the button.
+				If not provided, it will default to "OK"
+			</p>
+			<input type="text" id="tbAlertButton" placeholder="button text" /><br />
+			<p>
+				<label>
+					<input type="checkbox" id="cbAlertClick" />
+					Allow closing by clicking outside
+				</label>
+			</p>
+			<button id="btnAlert">Show dialog</button><br />
+			<p id="tbAlertResult"><i>Dialog has not yet been shown</i></p>
+		</div>
+
+		<h2>dialog.confirm(body, title, okBtn, cancelBtn)</h2>
+		<div>
+			<p>
+				<b>Dialog box title</b>:
+				Shown at the top of the dialog using a &lt;h1&gt; tag.
+				It's optional and will not be shown if no value is provided
+			</p>
+			<input type="text" id="tbConfirmTitle" placeholder="dialog title" /><br />
+			<p>
+				<b>Dialog box content</b>:
+				This is the text in the main dialog section.
+			</p>
+			<input type="text" id="tbConfirmBody" placeholder="dialog text" /><br />
+			<p>
+				<b>Dialog "OK" button text</b>:
+				This is the text shown in the OK button.
+				If not provided, it will default to "OK"
+			</p>
+			<input type="text" id="tbConfirmButton1" placeholder="button text" /><br />
+			<p>
+				<b>Dialog "Cancel" button text</b>:
+				This is the text shown in the cancel button.
+				If not provided, it will default to "Cancel"
+			</p>
+			<input type="text" id="tbConfirmButton2" placeholder="button text" /><br />
+			<p>
+				<label>
+					<input type="checkbox" id="cbConfirmClick" />
+					Allow closing by clicking outside
+				</label>
+			</p>
+			<button id="btnConfirm">Show dialog</button><br />
+			<p id="tbConfirmResult"><i>Dialog has not yet been shown</i></p>
+		</div>
+
+		<h2>dialog.prompt(body, prefill, title, okBtn, cancelBtn)</h2>
+		<div>
+			<p>
+				<b>Dialog box title</b>:
+				Shown at the top of the dialog using a &lt;h1&gt; tag.
+				It's optional and will not be shown if no value is provided
+			</p>
+			<input type="text" id="tbPromptTitle" placeholder="dialog title" /><br />
+			<p>
+				<b>Dialog box content</b>:
+				This is the text in the main dialog section
+			</p>
+			<input type="text" id="tbPromptBody" placeholder="dialog text" /><br />
+			<p>
+				<b>Prefill value</b>:
+				Initial value that should be in the text box.
+				If not provided, the text box will be left blank
+			</p>
+			<input type="text" id="tbPromptPrefill" placeholder="Prefill value" /><br />
+			<p>
+				<b>Dialog "OK" button text</b>:
+				This is the text shown in the OK button.
+				If not provided, it will default to "OK"
+			</p>
+			<input type="text" id="tbPromptButton1" placeholder="button text" /><br />
+			<p>
+				<b>Dialog "Cancel" button text</b>:
+				This is the text shown in the cancel button.
+				If not provided, it will default to "Cancel"
+			</p>
+			<input type="text" id="tbPromptButton2" placeholder="button text" /><br />
+			<p>
+				<label>
+					<input type="checkbox" id="cbPromptClick" />
+					Allow closing by clicking outside
+				</label>
+			</p>
+			<button id="btnPrompt">Show dialog</button><br />
+			<p id="tbPromptResult"><i>Dialog has not yet been shown</i></p>
+		</div>
+
+		<h2>dialog.custom(body, title, buttonConfig)</h2>
+		<div>
+			<p>
+				<label>
+					<input type="checkbox" id="cbCustomClick" />
+					Allow closing by clicking outside
+				</label>
+			</p>
+			<button id="btnCustom">Show a custom dialog</button>
+		</div>
+
+		<h2>Stacking dialogs</h2>
+		<button id="btnStack">Open multiple dialogs</button>
+
+		<h2>No buttons</h2>
+		<button id="btnNoButtons">Open a dialog with no buttons</button>
+
+		<p><a href="index.html">&lt; &lt; Go back</a></p>
+	</body>
+</html>

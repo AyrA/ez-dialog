@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>EZ Dialog information</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>EZ Dialog information</h1>
+		<p>
+			This page shows additional information for interacting with dialog boxes
+		</p>
+
+		<h2>async/await pattern</h2>
+		<p>
+			Due to how the dialog element works,
+			all functions run asynchronously and will by default not block.
+			You must await them if you plan on evaluating the result of the dialog,
+			or want the dialog to block code that follows the dialog call
+			until it's closed.
+		</p>
+
+		<h2>Stacking dialogs</h2>
+		<p>
+			You can open multiple dialogs at once
+			and they will stack on top of each other.
+		</p>
+		
+		<h2>No buttons</h2>
+		<p>
+			Opening a dialog that has no buttons to close it
+			will automatically register a click handler
+			regardless on whether you used the "closeOnBackdrop" argument or not.
+			The handler will close the dialog when you click outside of it.
+			alert, confirm, and prompt behave as if you've cancelled them
+			(for alert there's no difference between close and cancel).<br />
+			Custom dialogs will return an empty string when closed this way.
+			This allows you to distinguish between clicking outside and pressing the ESC key for example.
+		</p>
+
+		<h2>Form focus</h2>
+		<p>
+			When a dialog is shown, focus is put on the first enabled form element inside it.
+			If you do not add custom form elements,
+			focus will be put on the first button.
+		</p>
+		
+		<h2>Confirming dialogs</h2>
+		<p>
+			Users can confirm the dialog using the <kbd>ENTER</kbd> key.
+			This pretends that the first button was pressed.
+		</p>
+
+		<h2>Cancelling dialogs</h2>
+		<p>
+			Users can cancel dialogs using the <kbd>ESC</kbd> key
+			and potentially by other browser internal means.
+			EZ Dialog behaves as if the cancel button was pressed in that case,
+			or the OK button for the alert window.
+		</p>
+		<p>
+			In <code>custom()</code> dialog boxes you can define which button is acting as the cancel button
+			by use of the "isCancel" property.
+			If no button has this property set to true,
+			the dialog promise will reject when the modal closes.
+			If multiple buttons have the property enabled, the first one will be taken.
+		</p>
+
+		<h2>Interacting with open dialogs</h2>
+		<p>
+			EZ Dialog does not stop you from interacting with open dialog boxes by any means.
+			You are free to add custom events to HTML elements you add via the custom() dialog.
+			Be aware that if you manually close the dialog using the internal .close() function
+			the result will be empty unless you provide the result string as argument to the function call.
+		</p>
+		
+		<p><a href="index.html">&lt; &lt; Go back</a></p>
+	</body>
+</html>

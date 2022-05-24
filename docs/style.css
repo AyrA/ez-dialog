@@ -1,0 +1,17 @@
+body{
+	font-family:sans-serif;
+	max-width:800px;
+	margin:auto;
+	padding-bottom:5em;
+}
+
+code,pre{
+	background-color:#EEE;
+	font-size:bigger;
+	font-family:Fira Code,Consolas,Monospace;
+}
+
+
+#btnContainer button{
+	margin:1em;
+}

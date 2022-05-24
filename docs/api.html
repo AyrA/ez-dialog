@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>EZ Dialog API documentation</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>EZ Dialog API documentation</h1>
+		<p>
+			EZ Dialog exposes a single function <code>ezDlg(closeOnBackdrop)</code>.
+			This function returns an object that can be used to open the four provided dialog types.
+		</p>
+		<h2>ezDlg(closeOnBackdrop)</h2>
+		<p>
+			<b>Description</b>:<br />
+			Instantiates a dialog object to create dialog windows.
+			You can either call the function every time you want to show a dialog,
+			or you can call it once and reuse the result object multiple times.<br />
+			The actual dialog box element is only created when a box has to be shown.
+			The element is also removed again automatically after the box has been closed.<br />
+			Multiple dialog boxes can be shown at once. They will stack on top of each other.
+		</p>
+		<p>
+			<b>Arguments</b>:<br />
+			The optional "closeOnBackdrop" boolean argument can be used
+			to always attach the mouse click handler.
+			Normally, a handler is only attached when no buttons are in a custom dialog.
+			Closing a dialog by clicking outside has the same effect as cancelling it.
+		</p>
+		<p>
+			<b>Returns</b>:<br />
+			Returns a <code>dialog</code> object with four functions:
+			<code>alert, confirm, prompt, custom</code><br />
+		</p>
+
+		<h2>dialog.alert(body, title, button)</h2>
+		<p>
+			<b>Description</b>:<br />
+			Replacement for <code>window.alert(body)</code>.
+			A simple dialog box with a title, body text, and a single button to close it.
+			The returned value is undefined at this point and should not be evaluated.
+		</p>
+		<p>
+			<b>Arguments</b>:<br />
+		</p>
+		<ul>
+			<li>body (DialogContent, required): Dialog box contents</li>
+			<li>title (string, optional=null): Title of the box</li>
+			<li>button (string, optional="OK"): Text of the OK button</li>
+		</ul>
+
+		<h2>dialog.confirm(body, title, okBtn, cancelBtn)</h2>
+		<p>
+			<b>Description</b>:<br />
+			Replacement for <code>window.confirm(body)</code>.
+			A dialog box with a title, body text, and two buttons to close it.
+			The function returns a boolean indicating whether the OK button was pressed or not.
+			Closing the dialog with the escape key simulates a cancel button press.
+		</p>
+		<p>
+			<b>Arguments</b>:<br />
+		</p>
+		<ul>
+			<li>body (DialogContent, required): Dialog box contents</li>
+			<li>title (string, optional=null): Title of the box</li>
+			<li>okBtn (string, optional="OK"): Text of the OK button</li>
+			<li>cancelBtn (string, optional="Cancel"): Text of the Cancel button</li>
+		</ul>
+
+		<h2>dialog.prompt(body, prefill, title, okBtn, cancelBtn)</h2>
+		<p>
+			<b>Description</b>:<br />
+			Replacement for <code>window.prompt(body, prefill)</code>.
+			A dialog box with a title, body text, a textbox, and two buttons to close it.
+			The function returns the string from the text box when closed with the OK button,
+			or <code>null</code> if closed otherwise.
+		</p>
+		<p>
+			<b>Arguments</b>:<br />
+		</p>
+		<ul>
+			<li>body (DialogContent, required): Dialog box contents</li>
+			<li>prefill (string, optional=null): Prefilled value in the text box</li>
+			<li>title (string, optional=null): Title of the box</li>
+			<li>okBtn (string, optional="OK"): Text of the OK button</li>
+			<li>cancelBtn (string, optional="Cancel"): Text of the Cancel button</li>
+		</ul>
+
+		<h2>dialog.custom(body, title, buttons)</h2>
+		<p>
+			<b>Description</b>:<br />
+			Shows a customizable dialog.
+			The returned value is the value of the button that has been clicked.
+		</p>
+		<p>
+			<b>Arguments</b>:<br />
+		</p>
+		<ul>
+			<li>body (DialogContent, required): Dialog box contents</li>
+			<li>title (string, optional=null): Title of the box</li>
+			<li>buttons (Array&lt;ButtonConfig&gt;, optional=[{value:"OK"}]): Button configuration</li>
+		</ul>
+
+		<h2>Type: DialogContent</h2>
+		<p>
+			Dialog boxes accept strings, nodes and node lists for body contents.
+			You can mix nodes and strings in an array to supply multiple values.
+			Note however that arrays aren't processed recursively.
+			This means node lists in arrays are not expanded into nodes.
+			To do this yourself, you can use <code>Array.from(NodeList)</code> to convert it
+			into an array of nodes.
+			You can then append or prepend additional elements or strings to it.<br />
+			Example:<br />
+			<code>[document.createElement("div"),"test"]</code><br />
+			This adds the div followed by a paragraph with the string "test" inside.
+		</p>
+
+		<h2>Type: ButtonConfig</h2>
+		<p>
+			This type is used in the custom dialog to specify the button configuration.
+			You can supply an array of as many buttons as you want.
+			Supply an empty array to create a dialog without buttons.
+			Supplying null or undefined uses a single "OK" button.
+		</p>
+		<p>
+			Format: <code>{value: string, text: string, isCancel: bool}</code>
+		</p>
+		<ul>
+			<li>value (required): The value returned when the button is clicked</li>
+			<li>text (optional=value): The text to show on the button. Defaults to the value</li>
+			<li>isCancel (optional=false): If true, this button acts as cancel for the dialog</li>
+		</ul>
+		<p>
+			Note: Only the first button with <code>isCancel=true</code> will act as cancel button.
+		</p>
+		<p>
+			When a custom dialog is shown, each button object will be populated with a "buttonElement" property.
+			This property holds the button HTML element reference.
+			You're free to interact with it, for example to add custom events to a button.
+			<a href="demo.html">The demo</a> has a custom dialog where a button is dynamically enabled or disabled.
+		</p>
+
+		<p><a href="index.html">&lt; &lt; Go back</a></p>
+	</body>
+</html>
